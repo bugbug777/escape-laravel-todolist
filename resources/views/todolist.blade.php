@@ -43,7 +43,13 @@
                             <tr>
                                 <td>{{ $task->title }}</td>
                                 <td>{{ $task->description }}</td>
-                                <td class="text-center">{{ $task->completed ? '完成' : '未完成' }}</td>
+                                <td class="text-center">
+                                    @if ($task->completed)
+                                        <span class="text-green-600">完成</span>
+                                    @else
+                                        <span class="text-gray-400">未完成</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="updateStatusBtn"
                                             onclick="updateStatus('{{ $task->id }}', '{{ $task->completed }}')">
