@@ -51,10 +51,16 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="updateStatusBtn"
+                                @if ($task->completed)
+                                    <button class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded" id="updateStatusBtn"
                                             onclick="updateStatus('{{ $task->id }}', '{{ $task->completed }}')">
-                                        標示{{ $task->completed ? '未完成' : '完成' }}</button>
-                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" id="deleteTodoBtn" onclick="deleteTodo('{{ $task->id }}')">刪除</button>
+                                        標示未完成</button>
+                                @else
+                                    <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" id="updateStatusBtn"
+                                                onclick="updateStatus('{{ $task->id }}', '{{ $task->completed }}')">
+                                            標示完成</button>
+                                @endif
+                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" id="deleteTodoBtn" onclick="deleteTodo('{{ $task->id }}')">刪除</button>
                                 </td>
                                 <td>{{ $task->created_at }}</td>
                                 <td>{{ $task->updated_at }}</td>
